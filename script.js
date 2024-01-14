@@ -5,20 +5,17 @@
 
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3);
-    switch (computerChoice) {
-        case 0:
-            return "rock";
-            break;
-        case 1:
-            return "paper";
-            break;
-        case 2:
-            return "scissors";
-            break;
-    }
+    return computerChoice;
 }
 
 // Create a function playRound that takes two parameters (playerSelection, computerSelection) to play a round of the game
 // This should return a string declaring who won (should be case-insensitive, account for ties by playing the round again (recalling func.?))
+
+function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    if (playerSelection == computerSelection) {
+        return "Tie";
+    } else if (playerSelection == "rock" && computerSelection == "paper") {}
+}
 
 // Create an outer function game that runs playRound five times, keeps track of score, and reports the winner after
