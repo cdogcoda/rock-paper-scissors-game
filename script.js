@@ -32,7 +32,7 @@ function playRound(playerSelection, computerSelection) {
         return "Computer Wins";
     } else if (playerSelection > computerSelection) {
         return "Player Wins";
-    } else {
+    } else if (computerSelection > playerSelection) {
         return "Computer Wins";
     }
 }
