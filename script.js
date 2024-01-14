@@ -13,9 +13,28 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
+    switch (playerSelection) {
+        case "rock":
+            playerSelection = 0;
+            break;
+        case "paper":
+            playerSelection = 1;
+            break;
+        case "scissors":
+            playerSelection = 2;
+            break;
+    }
     if (playerSelection == computerSelection) {
         return "Tie";
-    } else if (playerSelection == "rock" && computerSelection == "paper") {}
+    } else if (playerSelection == 0 && computerSelection == 2) {
+        return "Player Wins";
+    } else if (computerSelection == 0 && playerSelection == 2) {
+        return "Computer Wins";
+    } else if (playerSelection > computerSelection) {
+        return "Player Wins";
+    } else {
+        return "Computer Wins";
+    }
 }
 
 // Create an outer function game that runs playRound five times, keeps track of score, and reports the winner after
