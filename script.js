@@ -38,3 +38,36 @@ function playRound(playerSelection, computerSelection) {
 }
 
 // Create an outer function game that runs playRound five times, keeps track of score, and reports the winner after
+
+function game() {
+    let playerScore = 0, computerScore = 0;
+    for (i=0; i<5; i++) {
+        let playerChoice = prompt("Choose");
+        let computerChoice = getComputerChoice();
+        let result = playRound(playerChoice, computerChoice);
+        if (result == "Player Wins") {
+            playerScore += 1;
+        } else if (result == "Computer Wins") {
+            computerScore += 1;
+        } else {
+            continue;
+        }
+        switch (computerChoice) {
+            case 0:
+                computerChoice = "rock";
+                break;
+            case 1:
+                computerChoice = "paper";
+                break;
+            case 2:
+                computerChoice = "scissors";
+                break;
+        }
+        console.log(`Player Score: ${playerScore}, ${playerChoice}`);
+        console.log(`Computer Score: ${computerScore}, ${computerChoice}`);
+        console.log(`Result: ${result}`);
+        console.log("");
+    }
+}
+
+game()
