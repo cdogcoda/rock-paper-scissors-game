@@ -1,3 +1,11 @@
+// My pseudocode
+
+// Get user and computer choices via prompt and randomization function
+// Compute the result of a single round via some function and return result
+// -> This function should also check if a user inputs falsy values (random strings, numbers, null, etc) and if true, return an appropriate message
+// Create an encompassing function that calls the round computing function a specified number of times (by the user)
+// -> This function should be reconfigured to use a while loop to account for ties
+
 // TOP's recommended steps
 
 // Create a function getComputerChoice that randomly returns rock, paper, or scissors (using some randomized function)
