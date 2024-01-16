@@ -20,7 +20,11 @@ function getComputerChoice() {
 // This should return a string declaring who won (should be case-insensitive, account for ties by playing the round again (recalling func.?))
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
+    if (!(playerSelection)) {
+        return "Invalid user input";
+    } else {
+        playerSelection = playerSelection.toLowerCase();
+    }
     switch (playerSelection) {
         case "rock":
             playerSelection = 0;
