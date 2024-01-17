@@ -53,7 +53,17 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
     let playerScore = 0, computerScore = 0, i=0;
-    while (i<5) {
+    let numOfRounds = 0, numOfRoundsExist = false;
+    while (!(numOfRoundsExist)) {
+        let numOfRoundsPrompt = prompt("How many rounds would you like to play?");
+        if (isNaN(numOfRoundsPrompt)) {
+            continue;
+        } else {
+            numOfRounds = +numOfRoundsPrompt;
+            numOfRoundsExist = true;
+        }
+    }
+    while (i<numOfRounds) {
         let playerChoice = prompt("Choose");
         let computerChoice = getComputerChoice();
         let result = playRound(playerChoice, computerChoice);
@@ -98,10 +108,14 @@ function game() {
         console.log("----------");
         console.log("Player Wins the Entire Game!");
         console.log("----------");
-    } else {
+    } else if (computerScore > playerScore) {
         console.log("----------");
         console.log("Computer Wins the Entire Game!");
         console.log("----------");    
+    } else {
+        console.log("----------");
+        console.log("You both win! Yippee!");
+        console.log("----------");  
     }
 }
 
