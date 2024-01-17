@@ -63,7 +63,15 @@ function game() {
         } else if (result == "Computer Wins") {
             computerScore += 1;
             i++;
+        } else if (result == "Tie") {
+            console.log("----------");
+            console.log("It was a tie! Run that one back!");
+            console.log("----------");
+            continue;
         } else {
+            console.log("----------");
+            console.log("Invalid user input");
+            console.log("----------");
             continue;
         }
         switch (computerChoice) {
