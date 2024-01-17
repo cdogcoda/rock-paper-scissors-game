@@ -64,11 +64,13 @@ function game() {
             computerScore += 1;
             i++;
         } else if (result == "Tie") {
+            console.clear();
             console.log("----------");
             console.log("It was a tie! Run that one back!");
             console.log("----------");
             continue;
         } else {
+            console.clear();
             console.log("----------");
             console.log("Invalid user input");
             console.log("----------");
@@ -85,6 +87,7 @@ function game() {
                 computerChoice = "scissors";
                 break;
         }
+        console.clear();
         console.log("----------");
         console.log(`Player Score: ${playerScore}, ${playerChoice}`);
         console.log(`Computer Score: ${computerScore}, ${computerChoice}`);
