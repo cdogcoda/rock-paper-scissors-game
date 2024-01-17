@@ -49,6 +49,20 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// Create a function to display the message that shows who won
+
+function displayWinnerMessage(condition) {
+    if (condition) {
+        console.log("----------");
+        console.log(`${condition} Wins the Entire Game!`);
+        console.log("----------");
+    } else {
+        console.log("----------");
+        console.log("You both win! Yippee!");
+        console.log("----------");  
+    }
+}
+
 // Create an outer function game that runs playRound five times, keeps track of score, and reports the winner after
 
 function game() {
@@ -105,17 +119,11 @@ function game() {
         console.log("----------");
     }
     if (playerScore > computerScore) {
-        console.log("----------");
-        console.log("Player Wins the Entire Game!");
-        console.log("----------");
+        displayWinnerMessage("Player");
     } else if (computerScore > playerScore) {
-        console.log("----------");
-        console.log("Computer Wins the Entire Game!");
-        console.log("----------");    
+        displayWinnerMessage("Computer");  
     } else {
-        console.log("----------");
-        console.log("You both win! Yippee!");
-        console.log("----------");  
+        displayWinnerMessage();
     }
 }
 
