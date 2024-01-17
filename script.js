@@ -94,6 +94,15 @@ function game() {
         console.log(`Result: ${result}`);
         console.log("----------");
     }
+    if (playerScore > computerScore) {
+        console.log("----------");
+        console.log("Player Wins the Entire Game!");
+        console.log("----------");
+    } else {
+        console.log("----------");
+        console.log("Computer Wins the Entire Game!");
+        console.log("----------");    
+    }
 }
 
 game()
