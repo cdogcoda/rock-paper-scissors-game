@@ -46,6 +46,8 @@ function playRound(playerSelection, computerSelection) {
         return "Player Wins";
     } else if (computerSelection > playerSelection) {
         return "Computer Wins";
+    } else {
+        return "Invalid user input";
     }
 }
 
@@ -70,7 +72,7 @@ function game() {
     let numOfRounds = 0, numOfRoundsExist = false;
     while (!(numOfRoundsExist)) {
         let numOfRoundsPrompt = prompt("How many rounds would you like to play?");
-        if (isNaN(numOfRoundsPrompt)) {
+        if (isNaN(numOfRoundsPrompt) || numOfRoundsPrompt === null || numOfRoundsPrompt === undefined) {
             continue;
         } else {
             numOfRounds = +numOfRoundsPrompt;
@@ -112,11 +114,6 @@ function game() {
                 break;
         }
         console.clear();
-        console.log("----------");
-        console.log(`Player Score: ${playerScore}, ${playerChoice}`);
-        console.log(`Computer Score: ${computerScore}, ${computerChoice}`);
-        console.log(`Result: ${result}`);
-        console.log("----------");
     }
     if (playerScore > computerScore) {
         displayWinnerMessage("Player");
