@@ -65,6 +65,22 @@ function displayWinnerMessage(condition) {
     }
 }
 
+// Create a function displayRoundResults that shows the winner of the current round
+
+function displayRoundResults(result, playerScore, playerChoice, computerScore, computerChoice) {
+    let roundResultsMessage;
+    console.clear();
+    if (result == "Tie" || result == "Invalid user input") {
+        roundResultsMessage = (result == "Tie") ? "It was a tie! Run that one back!" : "Invalid user input";
+    } else {
+        roundResultsMessage = 
+        `Player Score: ${playerScore}, ${playerChoice}\nComputer Score: ${computerScore}, ${computerChoice}\nResult: ${result}`
+    }
+    console.log("----------");
+    console.log(roundResultsMessage);
+    console.log("----------");
+}
+
 // Create an outer function game that runs playRound five times, keeps track of score, and reports the winner after
 
 function game() {
@@ -90,16 +106,10 @@ function game() {
             computerScore += 1;
             i++;
         } else if (result == "Tie") {
-            console.clear();
-            console.log("----------");
-            console.log("It was a tie! Run that one back!");
-            console.log("----------");
+            displayRoundResults(result)
             continue;
         } else {
-            console.clear();
-            console.log("----------");
-            console.log("Invalid user input");
-            console.log("----------");
+            displayRoundResults(result);
             continue;
         }
         switch (computerChoice) {
@@ -113,7 +123,7 @@ function game() {
                 computerChoice = "scissors";
                 break;
         }
-        console.clear();
+        displayRoundResults(result, playerScore, playerChoice, computerScore, computerChoice);
     }
     if (playerScore > computerScore) {
         displayWinnerMessage("Player");
