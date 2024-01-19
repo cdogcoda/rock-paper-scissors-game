@@ -105,9 +105,6 @@ function game() {
         } else if (result == "Computer Wins") {
             computerScore += 1;
             i++;
-        } else if (result == "Tie") {
-            displayRoundResults(result)
-            continue;
         } else {
             displayRoundResults(result);
             continue;
