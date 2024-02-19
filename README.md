@@ -1,3 +1,7 @@
 # rock-paper-scissors-game
 
 Hello everyone! I am super excited to be working on my third project for the Odin Project today, and better yet, my very first including Javascript! After this project, which at the time I'm writing this is just going to be a basic game played from the console in the developer tools, I should have been able to demonstrate a basic proficiency in the following: use of variables, numbers, strings, conditionals, functions, and much more in Javascript; problem-solving skills (chunking steps, planning out, etc) and use of pseudocode. But with that said, I thank you all for coming to view this repo and hope you enjoy the project!
+
+UI Update: 
+
+Hello everyone! I am back, and I'm here to add the UI baby LET'S GO! Today, I will be building on top of my current rock paper scissors game by adding elements to the screen and creating a simple playable user interface. After the added feature, which by the way, is being created on a new Git branch and will later be merged with the main file, I should have been able to demonstrate a decent proficiency in the following skills: clean coding practices, use of loops, arrays, DOM manipulation, creating and firing JavaScript events, and more! With that said, thank you once again for being back here, and thank you all for viewing this repo!
