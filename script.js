@@ -66,7 +66,7 @@ function playRound(playerSelection, computerSelection) {
 // Create a function to display the message that shows who won
 
 const roundOutputTextbox = document.querySelector("div");
-roundOutputTextbox.style.cssText = "border: 2px solid black; height: 300px; padding: 16px; font-size: 24px; margin-top: 16px"
+roundOutputTextbox.style.cssText = "border: 2px solid black; height: 300px; padding: 16px; font-size: 24px; margin-top: 16px; white-space: pre-line";
 
 function displayWinnerMessage(condition) {
     if (condition) {
@@ -91,7 +91,7 @@ function displayRoundResults(result, playerScore, playerChoice, computerScore, c
         roundResultsMessage = 
         `Player Score: ${playerScore}, ${playerChoice}\nComputer Score: ${computerScore}, ${computerChoice}\nResult: ${result}`
     }
-    roundOutputTextbox.textContent = "Output: " + roundResultsMessage;
+    roundOutputTextbox.textContent = `Output: \n ${roundResultsMessage}`;
 }
 
 // Create an outer function game that runs playRound five times, keeps track of score, and reports the winner after
