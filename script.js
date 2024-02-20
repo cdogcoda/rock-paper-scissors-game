@@ -6,6 +6,18 @@
 // Create an encompassing function that calls the round computing function a specified number of times (by the user)
 // -> This function should be reconfigured to use a while loop to account for ties
 
+// My UI pseudocode 
+
+// Create UI elements to reference in JS (the three buttons for user input, an empty paragraph or div for storing the results)
+// Replace the user input functionality with an interactable medium (from prompt box to buttons with event listener)
+// -> Change function game so that it takes an argument holding the value of the button pressed to make the calculations
+// -> TOP recommends for now to remove the functionality that plays a specified number of rounds (the while loop)
+// Change the way the user plays the game from being time-sensitive to being event sensitive
+// -> Instead of calling function game at the start of the script, call it every time a button is clicked and calculate results on a round-by-round basis
+// -> This means that the way the user tells the program how many rounds to play should be changed and kept in the global scope to avoid messing with the function calculations each round
+// -> Also means that the variables tracking scores and rounds played must also be global to avoid being reset each time function game is called
+
+
 // TOP's recommended steps
 
 // Create a function getComputerChoice that randomly returns rock, paper, or scissors (using some randomized function)
