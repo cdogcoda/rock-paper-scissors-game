@@ -65,6 +65,9 @@ function playRound(playerSelection, computerSelection) {
 
 // Create a function to display the message that shows who won
 
+const roundOutputTextbox = document.querySelector("div");
+roundOutputTextbox.style.cssText = "border: 2px solid black; height: 300px; padding: 16px; font-size: 24px; margin-top: 16px"
+
 function displayWinnerMessage(condition) {
     if (condition) {
         console.log("----------");
@@ -88,21 +91,20 @@ function displayRoundResults(result, playerScore, playerChoice, computerScore, c
         roundResultsMessage = 
         `Player Score: ${playerScore}, ${playerChoice}\nComputer Score: ${computerScore}, ${computerChoice}\nResult: ${result}`
     }
-    console.log("----------");
-    console.log(roundResultsMessage);
-    console.log("----------");
+    roundOutputTextbox.textContent = "Output: " + roundResultsMessage;
 }
 
 // Create an outer function game that runs playRound five times, keeps track of score, and reports the winner after
 
-const playerChoices = document.querySelectorAll(".player-choice");
-playerChoices.forEach((choice) => choice.addEventListener("click", function() {
-    game(this.value);
+let playerScore = 0, computerScore = 0, i=0;
+const playerChoiceButtons = document.querySelectorAll(".player-choice");
+playerChoiceButtons.forEach((button) => button.addEventListener("click", function() {
+    let buttonValue = this.value;
+    game(buttonValue);
 }))
 
-function game(playerpass) {
-    let playerScore = 0, computerScore = 0, i=0;
-    let playerChoice = playerpass;
+function game(playerChoiceValue) {
+    let playerChoice = playerChoiceValue;
     let computerChoice = getComputerChoice();
     let result = playRound(playerChoice, computerChoice);
     if (result == "Player Wins") {
@@ -127,13 +129,3 @@ function game(playerpass) {
     }
     displayRoundResults(result, playerScore, playerChoice, computerScore, computerChoice);
 }
-// if (playerScore > computerScore) {
-//     displayWinnerMessage("Player");
-// } else if (computerScore > playerScore) {
-//     displayWinnerMessage("Computer");  
-// } else {
-//     displayWinnerMessage();
-// }
-
-
-// game()
