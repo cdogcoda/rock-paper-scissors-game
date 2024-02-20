@@ -95,52 +95,45 @@ function displayRoundResults(result, playerScore, playerChoice, computerScore, c
 
 // Create an outer function game that runs playRound five times, keeps track of score, and reports the winner after
 
-function game() {
-    let playerScore = 0, computerScore = 0, i=0;
-    let numOfRounds = 0, numOfRoundsExist = false;
-    while (!(numOfRoundsExist)) {
-        let numOfRoundsPrompt = prompt("How many rounds would you like to play?");
-        if (isNaN(numOfRoundsPrompt) || numOfRoundsPrompt === null || numOfRoundsPrompt === undefined) {
-            continue;
-        } else {
-            numOfRounds = +numOfRoundsPrompt;
-            numOfRoundsExist = true;
-        }
-    }
-    while (i<numOfRounds) {
-        let playerChoice = prompt("Choose");
-        let computerChoice = getComputerChoice();
-        let result = playRound(playerChoice, computerChoice);
-        if (result == "Player Wins") {
-            playerScore += 1;
-            i++;
-        } else if (result == "Computer Wins") {
-            computerScore += 1;
-            i++;
-        } else {
-            displayRoundResults(result);
-            continue;
-        }
-        switch (computerChoice) {
-            case 0:
-                computerChoice = "rock";
-                break;
-            case 1:
-                computerChoice = "paper";
-                break;
-            case 2:
-                computerChoice = "scissors";
-                break;
-        }
-        displayRoundResults(result, playerScore, playerChoice, computerScore, computerChoice);
-    }
-    if (playerScore > computerScore) {
-        displayWinnerMessage("Player");
-    } else if (computerScore > playerScore) {
-        displayWinnerMessage("Computer");  
-    } else {
-        displayWinnerMessage();
-    }
-}
+const playerChoices = document.querySelectorAll(".player-choice");
+playerChoices.forEach((choice) => choice.addEventListener("click", function() {
+    game(this.value);
+}))
 
-game()
+function game(playerpass) {
+    let playerScore = 0, computerScore = 0, i=0;
+    let playerChoice = playerpass;
+    let computerChoice = getComputerChoice();
+    let result = playRound(playerChoice, computerChoice);
+    if (result == "Player Wins") {
+        playerScore += 1;
+        i++;
+    } else if (result == "Computer Wins") {
+        computerScore += 1;
+        i++;
+    } else {
+        displayRoundResults(result);
+    }
+    switch (computerChoice) {
+        case 0:
+            computerChoice = "rock";
+            break;
+        case 1:
+            computerChoice = "paper";
+            break;
+        case 2:
+            computerChoice = "scissors";
+            break;
+    }
+    displayRoundResults(result, playerScore, playerChoice, computerScore, computerChoice);
+}
+// if (playerScore > computerScore) {
+//     displayWinnerMessage("Player");
+// } else if (computerScore > playerScore) {
+//     displayWinnerMessage("Computer");  
+// } else {
+//     displayWinnerMessage();
+// }
+
+
+// game()
