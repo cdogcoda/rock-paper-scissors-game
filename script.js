@@ -117,10 +117,10 @@ function game(playerChoiceValue) {
     let result = playRound(playerChoice, computerChoice);
     if (result == "Player Wins") {
         playerScore += 1;
-        i++;
+        roundCounter++;
     } else if (result == "Computer Wins") {
         computerScore += 1;
-        i++;
+        roundCounter++;
     } else {
         displayRoundResults(result);
     }
