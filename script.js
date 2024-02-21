@@ -70,13 +70,9 @@ roundOutputTextbox.style.cssText = "border: 2px solid black; height: 300px; padd
 
 function displayWinnerMessage(condition) {
     if (condition) {
-        console.log("----------");
-        console.log(`${condition} Wins the Entire Game!`);
-        console.log("----------");
+        roundOutputTextbox.textContent += "\n----------\n" + `${condition} Wins the Entire Game!`;
     } else {
-        console.log("----------");
-        console.log("You both win! Yippee!");
-        console.log("----------");  
+        roundOutputTextbox.textContent += "\n----------\n" + "You both win! Yippee!";
     }
 }
 
@@ -84,24 +80,36 @@ function displayWinnerMessage(condition) {
 
 function displayRoundResults(result, playerScore, playerChoice, computerScore, computerChoice) {
     let roundResultsMessage;
-    console.clear();
     if (result == "Tie" || result == "Invalid user input") {
         roundResultsMessage = (result == "Tie") ? "It was a tie! Run that one back!" : "Invalid user input";
     } else {
         roundResultsMessage = 
         `Player Score: ${playerScore}, ${playerChoice}\nComputer Score: ${computerScore}, ${computerChoice}\nResult: ${result}`
     }
-    roundOutputTextbox.textContent = `Output: \n ${roundResultsMessage}`;
+    roundOutputTextbox.textContent = `Output: \n${roundResultsMessage}`;
 }
 
 // Create an outer function game that runs playRound five times, keeps track of score, and reports the winner after
 
-let playerScore = 0, computerScore = 0, i=0;
+let playerScore = 0, computerScore = 0, i=0, numOfRounds;
 const playerChoiceButtons = document.querySelectorAll(".player-choice");
 playerChoiceButtons.forEach((button) => button.addEventListener("click", function() {
     let buttonValue = this.value;
-    game(buttonValue);
+    if (i < numOfRounds) {
+        game(buttonValue);
+    }
+    if (i == numOfRounds) {
+        if (playerScore > computerScore) {
+            displayWinnerMessage("Player");
+        } else if (computerScore > playerScore) {
+            displayWinnerMessage("Computer")
+        } else {
+            displayWinnerMessage();
+        }
+    }
 }))
+
+numOfRounds = +prompt("How many rounds?: ");
 
 function game(playerChoiceValue) {
     let playerChoice = playerChoiceValue;
