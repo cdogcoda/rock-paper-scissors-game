@@ -97,7 +97,7 @@ function computePlayerChoice() {
         game(buttonValue);
     }
     if (roundCounter == numOfRounds) {
-        this.removeEventListener("click", computePlayerChoice);
+        playerChoiceButtons.forEach((button) => button.removeEventListener("click", computePlayerChoice));
         if (playerScore > computerScore) {
             displayWinnerMessage("Player");
         } else if (computerScore > playerScore) {
