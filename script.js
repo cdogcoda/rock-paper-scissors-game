@@ -99,6 +99,7 @@ function computePlayerChoice() {
         }
         if (roundCounter == numOfRounds) {
             playerChoiceButtons.forEach((button) => button.removeEventListener("click", computePlayerChoice));
+            document.body.appendChild(restartGameButton);
             if (playerScore > computerScore) {
                 displayWinnerMessage("Player");
             } else if (computerScore > playerScore) {
@@ -117,9 +118,11 @@ playerChoiceButtons.forEach((button) => button.addEventListener("click", compute
 const numOfRoundsLabel = document.createElement("label");
 const numOfRoundsInput = document.createElement("input");
 const numOfRoundsInputSubmitButton = document.createElement("button");
+const restartGameButton = document.createElement("button");
 numOfRoundsLabel.textContent = "# of Rounds: "
 numOfRoundsInputSubmitButton.textContent = "Submit";
 numOfRoundsInputSubmitButton.style.cssText = "margin-top: 16px; margin-left: 8px";
+restartGameButton.textContent = "Restart";
 document.body.appendChild(numOfRoundsLabel);
 document.body.appendChild(numOfRoundsInput);
 document.body.appendChild(numOfRoundsInputSubmitButton);
@@ -134,6 +137,16 @@ numOfRoundsInputSubmitButton.addEventListener("click", function() {
         alert("Please enter a valid value.");
     }
 })
+
+restartGameButton.addEventListener("click", function() {
+    document.body.removeChild(restartGameButton);
+    roundOutputTextbox.textContent = "Output: ";
+    document.body.appendChild(numOfRoundsLabel);
+    document.body.appendChild(numOfRoundsInput);
+    document.body.appendChild(numOfRoundsInputSubmitButton);
+    playerChoiceButtons.forEach((button) => button.addEventListener("click", computePlayerChoice));
+    playerScore = 0, computerScore = 0, roundCounter = 0, numOfRounds = 0;
+});
 
 function game(playerChoiceValue) {
     let playerChoice = playerChoiceValue;
