@@ -123,7 +123,7 @@ document.body.appendChild(numOfRoundsInput);
 document.body.appendChild(numOfRoundsInputSubmitButton);
 
 numOfRoundsInputSubmitButton.addEventListener("click", function() {
-    if (numOfRoundsInput.value) {
+    if (Number.isInteger(parseInt(numOfRoundsInput.value))) {
         numOfRounds = +numOfRoundsInput.value;
         document.body.removeChild(numOfRoundsLabel);
         document.body.removeChild(numOfRoundsInput);
