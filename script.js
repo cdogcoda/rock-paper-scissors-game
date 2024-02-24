@@ -92,19 +92,21 @@ function displayRoundResults(result, playerScore, playerChoice, computerScore, c
 // Create an outer function game that runs playRound five times, keeps track of score, and reports the winner after
 
 function computePlayerChoice() {
-    let buttonValue = this.value;
-    if (roundCounter < numOfRounds) {
-        game(buttonValue);
-    }
-    if (roundCounter == numOfRounds) {
-        playerChoiceButtons.forEach((button) => button.removeEventListener("click", computePlayerChoice));
-        if (playerScore > computerScore) {
-            displayWinnerMessage("Player");
-        } else if (computerScore > playerScore) {
-            displayWinnerMessage("Computer");
-        } else {
-            displayWinnerMessage();
+    if (!(document.body.contains(numOfRoundsInputSubmitButton))) {
+        let buttonValue = this.value;
+        if (roundCounter < numOfRounds) {
+            game(buttonValue);
         }
+        if (roundCounter == numOfRounds) {
+            playerChoiceButtons.forEach((button) => button.removeEventListener("click", computePlayerChoice));
+            if (playerScore > computerScore) {
+                displayWinnerMessage("Player");
+            } else if (computerScore > playerScore) {
+                displayWinnerMessage("Computer");
+            } else {
+                displayWinnerMessage();
+            }
+        } 
     }
 }
 
