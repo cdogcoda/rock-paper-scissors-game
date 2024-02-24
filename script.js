@@ -33,6 +33,8 @@ restartGameButton.textContent = "Restart";
 document.body.appendChild(numOfRoundsLabel);
 document.body.appendChild(numOfRoundsInput);
 document.body.appendChild(numOfRoundsInputSubmitButton);
+playerChoiceButtons.forEach((button) => document.body.removeChild(button));
+document.body.removeChild(roundOutputTextbox);
 
 numOfRoundsInputSubmitButton.addEventListener("click", function() {
     if (Number.isInteger(parseInt(numOfRoundsInput.value))) {
@@ -41,6 +43,8 @@ numOfRoundsInputSubmitButton.addEventListener("click", function() {
         document.body.removeChild(numOfRoundsLabel);
         document.body.removeChild(numOfRoundsInput);
         document.body.removeChild(numOfRoundsInputSubmitButton);
+        playerChoiceButtons.forEach((button) => document.body.appendChild(button));
+        document.body.appendChild(roundOutputTextbox);
     } else {
         alert("Please enter a valid value.");
     }
@@ -52,6 +56,8 @@ restartGameButton.addEventListener("click", function() {
     document.body.appendChild(numOfRoundsLabel);
     document.body.appendChild(numOfRoundsInput);
     document.body.appendChild(numOfRoundsInputSubmitButton);
+    playerChoiceButtons.forEach((button) => document.body.removeChild(button));
+    document.body.removeChild(roundOutputTextbox);
     playerChoiceButtons.forEach((button) => button.addEventListener("click", computePlayerChoice));
     playerScore = 0, computerScore = 0, roundCounter = 0, numOfRounds = 0;
 });
