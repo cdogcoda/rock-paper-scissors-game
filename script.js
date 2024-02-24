@@ -17,104 +17,11 @@
 // -> This means that the way the user tells the program how many rounds to play should be changed and kept in the global scope to avoid messing with the function calculations each round
 // -> Also means that the variables tracking scores and rounds played must also be global to avoid being reset each time function game is called
 
-
-// TOP's recommended steps
-
-// Create a function getComputerChoice that randomly returns rock, paper, or scissors (using some randomized function)
-// This should return and represent the computer's choice in each round of a game
-
-function getComputerChoice() {
-    let computerChoice = Math.floor(Math.random() * 3);
-    return computerChoice;
-}
-
-// Create a function playRound that takes two parameters (playerSelection, computerSelection) to play a round of the game
-// This should return a string declaring who won (should be case-insensitive, account for ties by playing the round again (recalling func.?))
-
-function playRound(playerSelection, computerSelection) {
-    if (!(playerSelection)) {
-        return "Invalid user input";
-    } else {
-        playerSelection = playerSelection.toLowerCase();
-    }
-    switch (playerSelection) {
-        case "rock":
-            playerSelection = 0;
-            break;
-        case "paper":
-            playerSelection = 1;
-            break;
-        case "scissors":
-            playerSelection = 2;
-            break;
-    }
-    if (playerSelection == computerSelection) {
-        return "Tie";
-    } else if (playerSelection == 0 && computerSelection == 2) {
-        return "Player Wins";
-    } else if (computerSelection == 0 && playerSelection == 2) {
-        return "Computer Wins";
-    } else if (playerSelection > computerSelection) {
-        return "Player Wins";
-    } else if (computerSelection > playerSelection) {
-        return "Computer Wins";
-    } else {
-        return "Invalid user input";
-    }
-}
-
-// Create a function to display the message that shows who won
-
 const roundOutputTextbox = document.querySelector("div");
 roundOutputTextbox.style.cssText = "border: 2px solid black; height: 300px; padding: 16px; font-size: 24px; margin-top: 16px; white-space: pre-line";
-
-function displayWinnerMessage(condition) {
-    if (condition) {
-        roundOutputTextbox.textContent += "\n----------\n" + `${condition} Wins the Entire Game!`;
-    } else {
-        roundOutputTextbox.textContent += "\n----------\n" + "You both win! Yippee!";
-    }
-}
-
-// Create a function displayRoundResults that shows the winner of the current round
-
-function displayRoundResults(result, playerScore, playerChoice, computerScore, computerChoice) {
-    let roundResultsMessage;
-    if (result == "Tie" || result == "Invalid user input") {
-        roundResultsMessage = (result == "Tie") ? "It was a tie! Run that one back!" : "Invalid user input";
-    } else {
-        roundResultsMessage = 
-        `Player Score: ${playerScore}, ${playerChoice}\nComputer Score: ${computerScore}, ${computerChoice}\nResult: ${result}`
-    }
-    roundOutputTextbox.textContent = `Output: \n${roundResultsMessage}`;
-}
-
-// Create an outer function game that runs playRound five times, keeps track of score, and reports the winner after
-
-function computePlayerChoice() {
-    if (!(document.body.contains(numOfRoundsInputSubmitButton))) {
-        let buttonValue = this.value;
-        if (roundCounter < numOfRounds) {
-            game(buttonValue);
-        }
-        if (roundCounter == numOfRounds) {
-            playerChoiceButtons.forEach((button) => button.removeEventListener("click", computePlayerChoice));
-            document.body.appendChild(restartGameButton);
-            if (playerScore > computerScore) {
-                displayWinnerMessage("Player");
-            } else if (computerScore > playerScore) {
-                displayWinnerMessage("Computer");
-            } else {
-                displayWinnerMessage();
-            }
-        } 
-    }
-}
-
 let playerScore = 0, computerScore = 0, roundCounter = 0, numOfRounds = 0;
 const playerChoiceButtons = document.querySelectorAll(".player-choice");
 playerChoiceButtons.forEach((button) => button.addEventListener("click", computePlayerChoice));
-
 const numOfRoundsLabel = document.createElement("label");
 const numOfRoundsInput = document.createElement("input");
 const numOfRoundsInputSubmitButton = document.createElement("button");
@@ -148,6 +55,82 @@ restartGameButton.addEventListener("click", function() {
     playerChoiceButtons.forEach((button) => button.addEventListener("click", computePlayerChoice));
     playerScore = 0, computerScore = 0, roundCounter = 0, numOfRounds = 0;
 });
+
+function getComputerChoice() {
+    let computerChoice = Math.floor(Math.random() * 3);
+    return computerChoice;
+}
+
+function computePlayerChoice() {
+    if (!(document.body.contains(numOfRoundsInputSubmitButton))) {
+        let buttonValue = this.value;
+        if (roundCounter < numOfRounds) {
+            game(buttonValue);
+        }
+        if (roundCounter == numOfRounds) {
+            playerChoiceButtons.forEach((button) => button.removeEventListener("click", computePlayerChoice));
+            document.body.appendChild(restartGameButton);
+            if (playerScore > computerScore) {
+                displayWinnerMessage("Player");
+            } else if (computerScore > playerScore) {
+                displayWinnerMessage("Computer");
+            } else {
+                displayWinnerMessage();
+            }
+        } 
+    }
+}
+
+function playRound(playerSelection, computerSelection) {
+    if (!(playerSelection)) {
+        return "Invalid user input";
+    } else {
+        playerSelection = playerSelection.toLowerCase();
+    }
+    switch (playerSelection) {
+        case "rock":
+            playerSelection = 0;
+            break;
+        case "paper":
+            playerSelection = 1;
+            break;
+        case "scissors":
+            playerSelection = 2;
+            break;
+    }
+    if (playerSelection == computerSelection) {
+        return "Tie";
+    } else if (playerSelection == 0 && computerSelection == 2) {
+        return "Player Wins";
+    } else if (computerSelection == 0 && playerSelection == 2) {
+        return "Computer Wins";
+    } else if (playerSelection > computerSelection) {
+        return "Player Wins";
+    } else if (computerSelection > playerSelection) {
+        return "Computer Wins";
+    } else {
+        return "Invalid user input";
+    }
+}
+
+function displayWinnerMessage(condition) {
+    if (condition) {
+        roundOutputTextbox.textContent += "\n----------\n" + `${condition} Wins the Entire Game!`;
+    } else {
+        roundOutputTextbox.textContent += "\n----------\n" + "You both win! Yippee!";
+    }
+}
+
+function displayRoundResults(result, playerScore, playerChoice, computerScore, computerChoice) {
+    let roundResultsMessage;
+    if (result == "Tie" || result == "Invalid user input") {
+        roundResultsMessage = (result == "Tie") ? "It was a tie! Run that one back!" : "Invalid user input";
+    } else {
+        roundResultsMessage = 
+        `Player Score: ${playerScore}, ${playerChoice}\nComputer Score: ${computerScore}, ${computerChoice}\nResult: ${result}`
+    }
+    roundOutputTextbox.textContent = `Output: \n${roundResultsMessage}`;
+}
 
 function game(playerChoiceValue) {
     let playerChoice = playerChoiceValue;
