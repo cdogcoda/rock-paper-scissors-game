@@ -130,6 +130,7 @@ document.body.appendChild(numOfRoundsInputSubmitButton);
 numOfRoundsInputSubmitButton.addEventListener("click", function() {
     if (Number.isInteger(parseInt(numOfRoundsInput.value))) {
         numOfRounds = +numOfRoundsInput.value;
+        numOfRoundsInput.value = "";
         document.body.removeChild(numOfRoundsLabel);
         document.body.removeChild(numOfRoundsInput);
         document.body.removeChild(numOfRoundsInputSubmitButton);
