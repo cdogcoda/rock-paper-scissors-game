@@ -108,11 +108,30 @@ function computePlayerChoice() {
     }
 }
 
-let playerScore = 0, computerScore = 0, roundCounter = 0, numOfRounds;
+let playerScore = 0, computerScore = 0, roundCounter = 0, numOfRounds = 0;
 const playerChoiceButtons = document.querySelectorAll(".player-choice");
 playerChoiceButtons.forEach((button) => button.addEventListener("click", computePlayerChoice));
 
-numOfRounds = +prompt("How many rounds?: ");
+const numOfRoundsLabel = document.createElement("label");
+const numOfRoundsInput = document.createElement("input");
+const numOfRoundsInputSubmitButton = document.createElement("button");
+numOfRoundsLabel.textContent = "# of Rounds: "
+numOfRoundsInputSubmitButton.textContent = "Submit";
+numOfRoundsInputSubmitButton.style.cssText = "margin-top: 16px; margin-left: 8px";
+document.body.appendChild(numOfRoundsLabel);
+document.body.appendChild(numOfRoundsInput);
+document.body.appendChild(numOfRoundsInputSubmitButton);
+
+numOfRoundsInputSubmitButton.addEventListener("click", function() {
+    if (numOfRoundsInput.value) {
+        numOfRounds = +numOfRoundsInput.value;
+        document.body.removeChild(numOfRoundsLabel);
+        document.body.removeChild(numOfRoundsInput);
+        document.body.removeChild(numOfRoundsInputSubmitButton);
+    } else {
+        alert("Please enter a valid value.");
+    }
+})
 
 function game(playerChoiceValue) {
     let playerChoice = playerChoiceValue;
