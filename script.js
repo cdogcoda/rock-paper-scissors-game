@@ -65,7 +65,7 @@ function computePlayerChoice() {
     if (!(document.body.contains(numOfRoundsInputSubmitButton))) {
         let buttonValue = this.value;
         if (roundCounter < numOfRounds) {
-            game(buttonValue);
+            checkRoundResults(buttonValue);
         }
         if (roundCounter == numOfRounds) {
             playerChoiceButtons.forEach((button) => button.removeEventListener("click", computePlayerChoice));
@@ -132,7 +132,7 @@ function displayRoundResults(result, playerScore, playerChoice, computerScore, c
     roundOutputTextbox.textContent = `Output: \n${roundResultsMessage}`;
 }
 
-function game(playerChoiceValue) {
+function checkRoundResults(playerChoiceValue) {
     let playerChoice = playerChoiceValue;
     let computerChoice = getComputerChoice();
     let result = playRound(playerChoice, computerChoice);
